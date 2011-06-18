@@ -1,6 +1,36 @@
 #coding:utf-8
 from datetime import date
 
+class Locadora(object):
+    def __init__(self,nome):
+        self.nome = nome
+        self.socios = []
+        self.copias = []
+    
+    def adicionar_copia_filme(self,filme):
+        self.copias.append(filme)
+    
+    def busca_filme_por_genero(self,genero):
+        copias_encontradas = []
+        for elemento in self.copias:
+            if elemento.genero_do_filme == genero:
+                copias_encontradas.append(elemento)
+        return copias_encontradas
+    
+    def busca_filme_por_diretor(self,diretor):
+        copias_encontradas = []
+        for elemento in self.copias:
+            if elemento.diretor_do_filme == diretor:
+                copias_encontradas.append(elemento)
+        return copias_encontradas
+    
+    def busca_filme_por_artistas(self,artista1,artista2):
+        copias_encontradas = []
+        for elemento in self.copias:
+            if elemento.artistas_do_filme[0] == artista1 or elemento.artistas_do_filme[1] == artista1 or elemento.artistas_do_filme[0] == artista2 or elemento.artistas_do_filme[1] == artista2:
+                copias_encontradas.append(elemento)
+        return copias_encontradas
+
 class Socio(object):
     def __init__(self,inscricao,nome,endereco,telefone):
         self.inscricao = inscricao
