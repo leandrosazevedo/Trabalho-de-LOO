@@ -14,7 +14,13 @@ Atualmente o controle de empréstimo é feito utilizando dois conjuntos de ficha
 - e o das informações das cópias, no qual se controla também os empréstimos.
 
 Nas fichas dos sócios constam as seguintes informações: número de inscrição, nome, endereço e telefone.
+
+
+##### RESOLVER NA AULA HOJE
 Nas fichas das cópias estão registrados: código de identificação da fita, título do filme, duração, ano, gênero, nome do diretor e de 2 (dois) dos artistas principais, data de aquisição e o estado da fita (bom ou ruim), além de uma lista de empréstimos com número de inscrição do sócio, data do empréstimo, data da devolução e valor pago.
+
+
+
 Estes dois últimos são preenchidos quando a cópia é devolvida.
 
 Nesta locadora existem vários filmes com várias cópias, e cada cópia recebe uma etiqueta com um código, por exemplo: 5.315 (como se fosse o número do CONCINE, único para cada cópia original).
@@ -26,7 +32,12 @@ gênero,
 diretor ou
 dos artistas prediletos.
 
-até aqui 18-06-2011
+
+
+
+
+
+
 
 Não é aceita reserva e todos os pagamentos são feitos no momento da devolução.
 Se o sócio atrasar a devolução deverá pagar multa.
