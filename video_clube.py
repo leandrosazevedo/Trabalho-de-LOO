@@ -45,8 +45,29 @@ class Locadora(object):
 
 #    def realizar_locacao(self,filmes,codigo_socio):
 #        for filme in filmes:
-            
 
+    def lista_todos_os_filmes_por_copia(self):
+        copias_gerais = []
+        lista_copias_e_quantidade = []
+        for elemento in self.copias:
+            copias_gerais.append(str(elemento.identificacao_da_fita).split(".")[0])
+        copias_unicas = set(copias_gerais)
+        for elemento in copias_unicas:
+            total_copias_do_filme = 0
+            for i in self.copias:
+                if str(i.identificacao_da_fita).split(".")[0] == str(elemento):
+                    total_copias_do_filme += 1
+            lista_copias_e_quantidade.append((self.buscar_copia_por_identificacao(elemento),total_copias_do_filme))
+        return lista_copias_e_quantidade
+
+
+
+    def buscar_copia_por_identificacao(self,identificacao_da_fita):
+        nome_filme = None
+        for elemento in self.copias:
+            if str(elemento.identificacao_da_fita).split(".")[0] == str(identificacao_da_fita):
+                nome_filme = elemento.titulo_do_filme
+                return elemento.titulo_do_filme
 
 class Socio(object):
     def __init__(self,inscricao,nome,endereco,telefone):
@@ -54,10 +75,7 @@ class Socio(object):
         self.nome = nome
         self.endereco = endereco
         self.telefone = telefone
-
-
-
-
+        
 class Copia(object):
     def __init__(self,identificacao_da_fita,titulo_do_filme,duracao_do_filme,ano_de_lancamento,genero_do_filme,diretor_do_filme,artistas_do_filme,data_aquisicao_do_filme,estado_da_fita,emprestimos):
         self.identificacao_da_fita = identificacao_da_fita
