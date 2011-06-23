@@ -12,3 +12,6 @@ class Filme(object):
 
     def adicionar_copia_filme(self,copia):
         self.copias.append(copia)
+    
+    def quantidade_de_copias_do_filme(self):
+        return self.copias.__len__()
