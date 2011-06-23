@@ -17,11 +17,13 @@ Nas fichas dos sócios constam as seguintes informações: número de inscriçã
 
 
 ##### RESOLVER NA AULA HOJE
-Nas fichas das cópias estão registrados: código de identificação da fita, título do filme, duração, ano, gênero, nome do diretor e de 2 (dois) dos artistas principais, data de aquisição e o estado da fita (bom ou ruim), além de uma lista de empréstimos com número de inscrição do sócio, data do empréstimo, data da devolução e valor pago.
+Nas fichas das cópias estão registrados: FILMES , título do filme, duração, ano, gênero, nome do diretor e de 2 (dois) dos artistas principais, lista COPIAS
+COPIA = código de identificação da fita, data de aquisição e o estado da fita (bom ou ruim)
 
-
-
+ALUGUEL => lista de empréstimos com número de inscrição do sócio, data do empréstimo, data da devolução e valor pago e codigo da coópia.
 Estes dois últimos são preenchidos quando a cópia é devolvida.
+
+
 
 Nesta locadora existem vários filmes com várias cópias, e cada cópia recebe uma etiqueta com um código, por exemplo: 5.315 (como se fosse o número do CONCINE, único para cada cópia original).
 
@@ -48,3 +50,9 @@ e artista.
 
 Ela deseja também uma lista das cópias em mal estado e outra de sócios inadimplentes.
 Existe interesse em manter um controle sobre diretores e artistas com nome, país de origem e data de nascimento de cada um.
+
+
+
+classe filme com uma lista que contem objetos do tipo cópia.
+
+classe aluguel.
