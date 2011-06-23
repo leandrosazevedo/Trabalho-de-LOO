@@ -8,6 +8,7 @@ from diretor import Diretor
 from artista import Artista
 from filme import Filme
 from copia import Copia
+from aluguel import Aluguel
 
 class Test_locadora(unittest.TestCase):
 
@@ -253,7 +254,64 @@ class Test_locadora(unittest.TestCase):
         locadora.adicionar_copia_a_um_filme(2,copia6)
         locadora.adicionar_copia_a_um_filme(2,copia7)
         locadora.adicionar_copia_a_um_filme(2,copia8)
-        locadora.lista_de_copias_em_mal_estado() |should| equal_to([["Piratas do Caribe",["1.03","1.04","1.05"]],["Harry Pother",["2.02","2.03"]],["X-man Primeira Classe",[]]])
+        locadora.lista_de_copias_em_mal_estado() |should| equal_to([["Piratas do Caribe",["1.03","1.04","1.05"]],["Harry Pother",["2.02","2.03"]]])
+
+
+    def test_realizar_locacao(self):
+        locadora = Locadora("Video Club Locadora")
+        diretor1 = Diretor("Ninguem","Brasil",date(1980,12,28))
+        diretor2 = Diretor("Alguem","Brasil",date(1980,12,28))
+        diretor3 = Diretor("Pedrinho","Brasil",date(1980,12,28))
+        artista1 = Artista("Artista A","Brasil",date(1990,11,10))
+        artista2 = Artista("Artista B","Brasil",date(1990,11,10))
+        artista3 = Artista("Artista C","Brasil",date(1990,11,10))
+        artista4 = Artista("Artista D","Brasil",date(1990,11,10))
+        artista5 = Artista("Artista E","Brasil",date(1990,11,10))
+        artista6 = Artista("Artista F","Brasil",date(1990,11,10))
+        filme1 = Filme(1,"Piratas do Caribe","120","2010","Ação",diretor1,(artista1,artista2))
+        filme2 = Filme(2,"Harry Pother","120","2011","Ficção",diretor2,(artista3,artista4))
+        filme3 = Filme(3,"X-man Primeira Classe","120","2011","Ficção",diretor3,(artista5,artista6))
+        locadora.adicionar_filme(filme1)
+        locadora.adicionar_filme(filme2)
+        locadora.adicionar_filme(filme3)
+        copia1 = Copia(1.01,date(2010,12,28),"B")
+        copia2 = Copia(1.02,date(2010,12,28),"B")
+        copia3 = Copia(1.03,date(2010,12,28),"R")
+        copia4 = Copia(1.04,date(2010,12,28),"R")
+        copia5 = Copia(1.05,date(2010,12,28),"R")
+        copia6 = Copia(2.01,date(2010,12,28),"B")
+        copia7 = Copia(2.02,date(2010,12,28),"R")
+        copia8 = Copia(2.03,date(2010,12,28),"R")
+        locadora.adicionar_copia_a_um_filme(1,copia1)
+        locadora.adicionar_copia_a_um_filme(1,copia2)
+        locadora.adicionar_copia_a_um_filme(1,copia3)
+        locadora.adicionar_copia_a_um_filme(1,copia4)
+        locadora.adicionar_copia_a_um_filme(1,copia5)
+        locadora.adicionar_copia_a_um_filme(2,copia6)
+        locadora.adicionar_copia_a_um_filme(2,copia7)
+        locadora.adicionar_copia_a_um_filme(2,copia8)
+        socio1 = Socio(0001,"Leandro Sousa Azevedo","Rua A. C. de Assis, 48","99517332")
+        socio2 = Socio(0002,"Joao","Rua A. C. de Assis, 48","99517332")
+        socio3 = Socio(0003,"Marcos","Rua A. C. de Assis, 48","99517332")
+        locadora.adicionar_socio(socio1)
+        locadora.adicionar_socio(socio2)
+        locadora.adicionar_socio(socio3)
+        aluguel1 = Aluguel(0001,date(2011,06,23),1.01)
+        aluguel2 = Aluguel(0001,date(2011,06,23),2.01)
+        locadora.realizar_locacao(aluguel1)
+        locadora.realizar_locacao(aluguel2)
+        locadora.emprestimos |should| equal_to([aluguel1,aluguel2])
+
+
+class Test_aluguel(unittest.TestCase):
+
+    def test_cadastro_de_um_aluguel(self):
+        aluguel = Aluguel(0001,date(2011,06,23),1.01)
+        aluguel.inscricao_do_socio |should| equal_to(0001)
+        aluguel.data_emprestimo |should| equal_to(date(2011,06,23))
+        aluguel.codigo_da_copia |should| equal_to(1.01)
+        aluguel.data_devolucao |should| equal_to(None)
+        aluguel.valor_pago |should| equal_to(None)
 
 
 class Test_socio(unittest.TestCase):
@@ -264,7 +322,7 @@ class Test_socio(unittest.TestCase):
         socio.nome |should| equal_to("Leandro Sousa Azevedo")
         socio.endereco |should| equal_to("Rua A. C. de Assis, 48")
         socio.telefone |should| equal_to("99517332")
-
+        
         
 class Test_filme(unittest.TestCase):
     

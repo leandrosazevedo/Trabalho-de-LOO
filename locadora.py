@@ -119,11 +119,12 @@ class Locadora(object):
                 for copia in filme.copias:
                     if copia.estado_da_copia == "R":
                         lista_copias_ruins.append(str(copia.identificacao_da_copia))
-            lista_filmes_com_copias_ruins.append([filme.titulo_do_filme,lista_copias_ruins])
+                lista_filmes_com_copias_ruins.append([filme.titulo_do_filme,lista_copias_ruins])
         return lista_filmes_com_copias_ruins
 
 
-
+    def realizar_locacao(self,aluguel):
+        self.emprestimos.append(aluguel)
 
 
 

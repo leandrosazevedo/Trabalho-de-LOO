@@ -5,32 +5,23 @@ git push origin master
 --------------------------------------------------------------------------------
 
 Trabalho de Leandro Sousa Azevedo para a P2 da Materia de LOO
-
 Mini-Mundo 2
 
 Um Vídeo Clube deseja controlar o empréstimo de fitas a seus sócios.
 Atualmente o controle de empréstimo é feito utilizando dois conjuntos de fichas:
 - o das informações dos sócios
 - e o das informações das cópias, no qual se controla também os empréstimos.
-
 ok - Nas fichas dos sócios constam as seguintes informações: número de inscrição, nome, endereço e telefone.
-
-
 Nas fichas das cópias estão registrados:
-
 ok - FILMES , título do filme, duração, ano, gênero, nome do diretor e de 2 (dois) dos artistas principais, lista COPIAS
 ok - COPIA = código de identificação da fita, data de aquisição e o estado da fita (bom ou ruim)
+ok - ALUGUEL => lista de empréstimos com número de inscrição do sócio, data do empréstimo, codigo da cópia, data da devolução e valor pago.
 
-ALUGUEL => lista de empréstimos com número de inscrição do sócio, data do empréstimo, data da devolução e valor pago e codigo da coópia.
-Estes dois últimos são preenchidos quando a cópia é devolvida.
+Estes dois últimos(Data de Devolução e Valor Pago) são preenchidos quando a cópia é devolvida.
 
 ok - Nesta locadora existem vários filmes com várias cópias, e cada cópia recebe uma etiqueta com um código, por exemplo: 5.315 (como se fosse o número do CONCINE, único para cada cópia original).
 
-
-
 Um empréstimo é valido por 72 horas no máximo e possui preço fixo.
-
-
 
 A locadora pretende colocar terminais de consulta em sua loja, possibilitando seus sócios a escolha de filmes a partir do:
 ok - gênero,
@@ -41,20 +32,15 @@ ok - dos artistas prediletos.
 Não é aceita reserva e todos os pagamentos são feitos no momento da devolução.
 Se o sócio atrasar a devolução deverá pagar multa.
 
-
 A gerência deseja que o sistema forneça um relatório:
 ok - de todos os filmes que possui, informando a quantidade de cópias por filme
-
-
 além de relatórios de filmes por:
-
 ok - gênero,
 ok - diretor
 ok - artista.
-
 lista de:
 ok - cópias em mal estado
+
 sócios inadimplentes.
 
 ok - Existe interesse em manter um controle sobre diretores e artistas com nome, país de origem e data de nascimento de cada um.
-
