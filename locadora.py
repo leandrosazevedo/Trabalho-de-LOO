@@ -1,4 +1,6 @@
 #coding:utf-8
+from datetime import date
+from datetime import timedelta
 
 class Locadora(object):
     
@@ -124,10 +126,57 @@ class Locadora(object):
 
 
     def realizar_locacao(self,aluguel):
+        for codigo in aluguel.codigos_das_copias:
+            for filme in self.filmes:
+                if str(filme.identificacao_do_filme) == str(codigo).split(".")[0]:
+                    for copia in filme.copias:
+                        if str(copia.identificacao_da_copia) == codigo:
+                            if copia.esta_alugado == False:
+                                copia.esta_alugado = True
         self.emprestimos.append(aluguel)
 
 
+    def realizar_devolucao(self,identificacao_do_aluguel,dia,mes,ano):
+        data_que_esta_devolvendo = date(ano,mes,dia)
+        for aluguel in self.emprestimos:
+            if str(aluguel.identificacao_do_aluguel) == str(identificacao_do_aluguel):
+                aluguel.data_devolucao = data_que_esta_devolvendo
+                aluguel.valor_pago = self.calcula_valor_pagamento(aluguel.data_emprestimo,data_que_esta_devolvendo,aluguel.codigos_das_copias.__len__())
+                valor_para_informar_ao_socio = aluguel.valor_pago
+                for codigo in aluguel.codigos_das_copias:#achando os códigos das cópias
+                    for filme in self.filmes:
+                        if str(filme.identificacao_do_filme) == str(codigo).split(".")[0]:#achando o filme
+                            for copia in filme.copias:
+                                copia.esta_alugado = False
+                return valor_para_informar_ao_socio
 
+    def calcula_valor_pagamento(self,data_inicial,data_final,quantidade_de_copias):
+        dias = data_final - data_inicial
+        dias = dias.days
+        if dias > 3:
+            dias = dias - 2
+            return str((quantidade_de_copias * 3.00)+(dias * 0.3))
+        else:
+            return str(quantidade_de_copias * 3.00)
+    
+    
+    def lista_de_socios_inadimplentes(self,data_atual):
+        lista_codigos_socios_inadimplentes = []
+        for aluguel in self.emprestimos:
+            if aluguel.data_devolucao == None:
+                diferenca_datas = data_atual - aluguel.data_emprestimo
+                dias = diferenca_datas.days
+                if dias > 3:
+                    lista_codigos_socios_inadimplentes.append(aluguel.inscricao_do_socio)
+        if lista_codigos_socios_inadimplentes != []:
+            lista_socios_inadimplentes = []
+            for socio in self.socios:
+                for codigo_socio in lista_codigos_socios_inadimplentes:
+                    if str(socio.inscricao) == str(codigo_socio):
+                        lista_socios_inadimplentes.append(socio)
+            return lista_socios_inadimplentes
+        else:
+            return None
 
 
 
