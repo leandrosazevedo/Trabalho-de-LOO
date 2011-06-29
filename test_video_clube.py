@@ -30,6 +30,7 @@ class Test_locadora(unittest.TestCase):
         locadora = Locadora("Video Club Locadora")
         socio = Socio(0001,"Leandro Sousa Azevedo","Rua A. C. de Assis, 48","99517332")
         locadora.adicionar_socio(socio)
+        locadora.socios |should| equal_to([socio])
     
     def test_adicionar_copia_a_um_filme(self):
         locadora = Locadora("Video Club Locadora")
@@ -41,6 +42,7 @@ class Test_locadora(unittest.TestCase):
         copia2 = Copia(1.02,date(2010,12,28),"R")        
         locadora.adicionar_copia_a_um_filme(1,copia1)
         locadora.adicionar_copia_a_um_filme(1,copia2)
+        filme1.copias |should| equal_to ([copia1,copia2])
         
     def test_busca_filme_por_genero(self):
         locadora = Locadora("Video Club Locadora")

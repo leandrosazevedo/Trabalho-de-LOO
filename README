@@ -2,6 +2,7 @@
 git add arquivo
 git commit -m "Texto do commit"
 git push origin master
+git rm --cached nome do arquivo
 --------------------------------------------------------------------------------
 
 Trabalho de Leandro Sousa Azevedo para a P2 da Materia de LOO
